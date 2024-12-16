@@ -1,6 +1,6 @@
 <launch>
 <!-- Ορισμός της παραμέτρου model -->
-  <arg name="model" default="mantzakidisbot.xacro"/>
+  <arg name="model" default="robot.xacro"/>
   <!-- Ορισμός της παραμέτρου robot_description -->
   <param name="robot_description" command="$(find xacro)/xacro  '$(find robot_project)/urdf/$(arg model)'" />
 

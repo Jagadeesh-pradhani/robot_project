@@ -180,7 +180,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.009999999776482582
       Style: Flat Squares
-      Topic: /mantzakidisbot/laser/scan
+      Topic: /robot/laser/scan
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -188,7 +188,7 @@ Visualization Manager:
     - Class: rviz/Camera
       Enabled: true
       Image Rendering: background and overlay
-      Image Topic: /mantzakidisbot/camera1/image_raw
+      Image Topic: /robot/camera1/image_raw
       Name: Camera
       Overlay Alpha: 0.5
       Queue Size: 2
@@ -242,7 +242,7 @@ Visualization Manager:
     - Class: rviz/Camera
       Enabled: true
       Image Rendering: background and overlay
-      Image Topic: /mantzakidisbot/camera2/image_raw
+      Image Topic: /robot/camera2/image_raw
       Name: Camera
       Overlay Alpha: 0.5
       Queue Size: 2

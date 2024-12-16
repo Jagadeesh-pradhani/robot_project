@@ -14,7 +14,7 @@ class RobotController:
         # Δημιουργία publisher για τις εντολές κίνησης
         self.velocity_publisher = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
         # Δημιουργία subscriber για τα δεδομένα σάρωσης laser
-        self.laser_subscriber = rospy.Subscriber('/mantzakidisbot/laser/scan', LaserScan, self.laser_callback)
+        self.laser_subscriber = rospy.Subscriber('/robot/laser/scan', LaserScan, self.laser_callback)
         # Δημιουργία αντικειμένου Twist για τις εντολές κίνησης
         self.twist = Twist()
 

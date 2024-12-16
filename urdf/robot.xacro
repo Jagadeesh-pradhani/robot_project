@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot name="mantzakidisbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
  <!-- Σταθερές για τις διαστάσεις του ρομπότ -->
  <xacro:property name="height1" value="0.25" />        <!-- Ύψος ρομπότ-->
@@ -31,13 +31,13 @@
   </xacro:macro>
 
 <!-- Εισαγωγή URDF του βραχίονα -->
-  <xacro:include filename="$(find robot_project)/urdf/mantzakidisbot_arm.xacro" />  
+  <xacro:include filename="$(find robot_project)/urdf/robot_arm.xacro" />  
 
 <!-- Εισαγωγή στοιχείων Gazebo, συμπεριλαμβανομένων των χρωμάτων του Gazebo -->
-  <xacro:include filename="$(find robot_project)/urdf/mantzakidisbot.gazebo" />
+  <xacro:include filename="$(find robot_project)/urdf/robot.gazebo" />
 
 <!-- Εισαγωγή laser & camera-->
-  <xacro:include filename="$(find robot_project)/urdf/mantzakidisbot_laser_camera.xacro" />
+  <xacro:include filename="$(find robot_project)/urdf/robot_laser_camera.xacro" />
 <!-- Εισαγωγή κάμερας κεφαλιού-->
   <xacro:include filename="$(find robot_project)/urdf/head_camera.xacro" />
 

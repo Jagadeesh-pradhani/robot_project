@@ -4,7 +4,7 @@
   <!-- Πρόσθετο ros_control -->
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <robotNamespace>/mantzakidisbot</robotNamespace>
+      <robotNamespace>/robot</robotNamespace>
       <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
     </plugin>
   </gazebo>
@@ -118,7 +118,7 @@
       <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>0.0</updateRate>
-        <cameraName>mantzakidisbot/camera1</cameraName>
+        <cameraName>robot/camera1</cameraName>
         <imageTopicName>image_raw</imageTopicName>
         <cameraInfoTopicName>camera_info</cameraInfoTopicName>
         <frameName>camera</frameName>
@@ -164,7 +164,7 @@
       </ray>
       <!-- Plugin για τον έλεγχο του Hokuyo Laser -->
       <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
-        <topicName>/mantzakidisbot/laser/scan</topicName>
+        <topicName>/robot/laser/scan</topicName>
         <frameName>hokuyo</frameName>
       </plugin>
     </sensor>
@@ -191,7 +191,7 @@
       <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>0.0</updateRate>
-        <cameraName>mantzakidisbot/camera2</cameraName>
+        <cameraName>robot/camera2</cameraName>
         <imageTopicName>image_raw</imageTopicName>
         <cameraInfoTopicName>camera_info</cameraInfoTopicName>
         <frameName>camera2</frameName>
