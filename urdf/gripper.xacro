@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Άρθρωση revolute για το αριστερό κομμάτι της αρπάγης και το τρίτο άκρο του βραχίονα -->
+  <joint name="left_gripper_joint" type="revolute">
+    <parent link="arm3"/>
+    <child link="left_gripper"/>
+    <origin xyz="0 0 ${h_arm3 - axle_offset}" rpy="0 -1.57 0"/>
+    <axis xyz="0 0 -1"/>
+    <limit effort="30.0" lower="-0.548" upper="0.0" velocity="0.1"/>
+  </joint>
+<!--Αριστερό κομμάτι αρπάγης-->
+  <link name="left_gripper">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://project_final_mantzakidis_131/meshes/l_finger.dae"/>
+      </geometry>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+    <xacro:default_inertial z_value="0" i_value="0.000001" mass="1"/>
+  </link>
+<!--Fixed άρθρωση του αριστερού κομματιού της αρπάγης και της άκρης του-->
+  <joint name="left_tip_joint" type="fixed">
+    <parent link="left_gripper"/>
+    <child link="left_tip"/>
+  </joint>
+<!--Άκρη του αριστερού κομματιού της αρπάγης-->
+  <link name="left_tip">
+    <visual>
+      <origin rpy="0 0 0" xyz="0.09137 0.00495 0"/>
+      <geometry>
+        <mesh filename="package://project_final_mantzakidis_131/meshes/l_finger_tip.dae"/>
+      </geometry>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+    <xacro:default_inertial z_value="0" i_value="1e-6" mass="1e-5"/>
+  </link>
+  <!-- Άρθρωση revolute για το δεξιό κομμάτι της αρπάγης και το τρίτο άκρο του βραχίονα -->
+  <joint name="right_gripper_joint" type="revolute">
+    <parent link="arm3"/>
+    <child link="right_gripper"/>
+    <origin xyz="0 0 ${h_arm3 - axle_offset}" rpy="0 -1.57 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="30.0" lower="-0.548" upper="0.0" velocity="0.1"/>
+  </joint>
+<!--Δεξιό κομμάτι αρπάγης-->
+  <link name="right_gripper">
+    <visual>
+      <origin rpy="3.1415 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://project_final_mantzakidis_131/meshes/l_finger.dae"/>
+      </geometry>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+    <xacro:default_inertial z_value="0" i_value="1e-6" mass="1"/>
+  </link>
+<!--Fixed άρθρωση του δεξιού κομματιού της αρπάγης και της άκρης του-->
+  <joint name="right_tip_joint" type="fixed">
+    <parent link="right_gripper"/>
+    <child link="right_tip"/>
+  </joint>
+<!--Άκρη του δεξιού κομματιού της αρπάγης-->
+  <link name="right_tip">
+    <visual>
+      <origin rpy="-3.1415 0 0" xyz="0.09137 0.00495 0"/>
+      <geometry>
+        <mesh filename="package://project_final_mantzakidis_131/meshes/l_finger_tip.dae"/>
+      </geometry>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+    <xacro:default_inertial z_value="0" i_value="1e-6" mass="1e-5"/>
+  </link>
+<!-- gripper_transmission1-Μετάδοση αρπάγης Αυτή η μετάδοση χρησιμοποιεί ένα απλό μοντέλο μετάδοσης (SimpleTransmission), 
+όπου μια ενέργεια εφαρμόζεται στην άρθρωση μεταξύ των τμημάτων "arm3" και "left gripper" -->
+  <transmission name="gripper_transmission1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="left_gripper_joint">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="gripper_motor1">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+<!-- gripper_transmission2-Μετάδοση αρπάγης Αυτή η μετάδοση χρησιμοποιεί ένα απλό μοντέλο μετάδοσης (SimpleTransmission), 
+όπου μια ενέργεια εφαρμόζεται στην άρθρωση μεταξύ των τμημάτων "arm3" και "right gripper" -->
+  <transmission name="gripper_transmission2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="right_gripper_joint">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="gripper_motor2">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+</robot>

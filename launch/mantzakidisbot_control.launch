@@ -1,0 +1,20 @@
+<launch>
+
+  <!-- Φόρτωση των ρυθμίσεων ελεγκτών αρθρώσεων από το αρχείο YAML στον server παραμέτρων -->
+  <rosparam file="$(find project_final_mantzakidis_131)/config/mantzakidisbot_control.yaml" command="load"/>
+
+   <!-- Φόρτωση των ελεγκτών -->
+  <node name="control_spawner" pkg="controller_manager" type="spawner" respawn="false"
+        output="screen" ns="mantzakidisbot" args="joint_state_controller
+                                                  joint_arm1_arm2_position_controller
+                                                  joint_arm2_arm3_position_controller
+                                                  left_gripper_joint_position_controller
+                                                  right_gripper_joint_position_controller"/>
+
+<!-- Μετατροπή των καταστάσεων των αρθρώσεων σε μετασχηματισμούς TF για το rviz, κλπ. -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+        respawn="false" output="screen">
+    <remap from="/joint_states" to="/mantzakidisbot/joint_states" />
+  </node>
+
+</launch>

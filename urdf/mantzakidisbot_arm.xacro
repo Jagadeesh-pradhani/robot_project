@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:property name="h_arm1" value="0.4" />   <!-- Μήκος του πρώτου τμήματος του βραχίονα -->
+<xacro:property name="h_arm2" value="0.6" />   <!-- Μήκος του δεύτερου τμήματος του βραχίονα -->
+<xacro:property name="h_arm3" value="0.4" />   <!-- Μήκος του τρίτου τμήματος του βραχίονα -->
+<xacro:property name="arm_width" value="0.1" />  <!-- Πλάτος των τμημάτων του βραχίονα -->
+ <xacro:property name="axle_offset" value="0.05" /> <!-- Απόσταση μεταξύ της άρθρωσης και του άκρου του τμήματος του βραχίωνα -->
+ <xacro:property name="damp" value="0.7" />  <!-- Aπόσβεση (damping) που εφαρμόζεται σε έναν αρθρωτό μηχανισμό για να μειωθούν οι δονήσεις-->
+
+<!-- Εισαγωγή URDF της αρπάγης -->
+  <xacro:include filename="$(find project_final_mantzakidis_131)/urdf/gripper.xacro" />
+
+<!-- Μακρο εντολή για τον υπολογισμό της αδράνειας-->
+  <xacro:macro name="default_inertial" params="z_value i_value mass">
+    <inertial>
+      <origin xyz="0 0 ${z_value}" rpy="0 0 0"/>
+      <mass value="${mass}" />
+      <inertia ixx="${i_value}" ixy="0.0" ixz="0.0"
+               iyy="${i_value}" iyz="0.0"
+               izz="${i_value}" />
+      </inertial>
+  </xacro:macro>
+
+<!--Πρώτο τμήμα του βραχίονα-->
+<joint name="arm_base" type="fixed">
+    <parent link="chassis"/>
+    <child link="arm1"/>
+    <origin xyz="0 0.25 0.32" rpy="0 0 0" />
+  </joint>
+
+ <link name="arm1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+	<box size="${arm_width} ${arm_width} ${h_arm1}"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 ${h_arm1/2}" rpy="0 0 0"/>
+      <geometry>
+	<box size="${arm_width} ${arm_width} ${h_arm1}"/>
+      </geometry>
+    </collision>
+
+    <xacro:default_inertial z_value="${h_arm1/2}" i_value="1.0" mass="0.5"/>
+  </link>
+
+<!-- Άρθρωση ανάμεσα στο πρώτο και το δεύτερο τμήμα του βραχίονα-->
+  <joint name="arm1_arm2_joint" type="revolute">
+    <parent link="arm1"/>
+    <child link="arm2"/>
+    <origin xyz="0 ${arm_width} 0.15" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <dynamics damping="${damp}"/>
+    <limit effort="100.0" velocity="0.5" lower="-3.14" upper="3.14" />
+  </joint>
+
+  <!-- Δεύτερο τμήμα του βραχίονα -->
+  <link name="arm2">
+    <visual>
+      <origin xyz="0 0 0.25" rpy="0 0 0"/>
+      <geometry>
+	<box size="${arm_width} ${arm_width} ${h_arm2}"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0.25" rpy="0 0 0"/>
+      <geometry>
+	<box size="${arm_width} ${arm_width} ${h_arm2}"/>
+      </geometry>
+    </collision>
+
+    <xacro:default_inertial z_value="${h_arm2/3 - axle_offset}" i_value="1.0" mass="0.5"/>
+  </link>
+
+
+<!-- Άρθρωση ανάμεσα στο δεύτερο και το τρίτο  τμήμα του βραχίονα -->
+  <joint name="arm2_arm3_joint" type="revolute"> 
+    <parent link="arm2"/>
+    <child link="arm3"/>
+    <origin xyz="0 ${arm_width} 0.5" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/> 
+    <dynamics damping="${damp}"/> 
+    <limit effort="100.0" velocity="0.5" lower="-3.14" upper="3.14" />
+  </joint>
+
+  <!-- Τρίτο τμήμα του βραχίονα -->
+  <link name="arm3">
+    <visual>
+      <origin xyz="0 0 0.15" rpy="0 0 0"/>
+      <geometry>
+	<box size="${arm_width} ${arm_width} ${h_arm3}"/>
+      </geometry>
+      <material name="orange"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0.25" rpy="0 0 0"/>
+      <geometry>
+	<box size="${arm_width} ${arm_width} ${h_arm3}"/>
+      </geometry>
+    </collision>
+
+    <xacro:default_inertial z_value="${h_arm3/2 - axle_offset}" i_value="1.0" mass="0.5"/>
+  </link>
+
+<!-- Transmission1-Μετάδοση1 Αυτή η μετάδοση χρησιμοποιεί ένα απλό μοντέλο μετάδοσης (SimpleTransmission), 
+όπου μια ενέργεια εφαρμόζεται στην άρθρωση μεταξύ των τμημάτων "arm1" και "arm2" -->
+  <transmission name="transmission1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="arm1_arm2_joint">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+<!-- Transmission2-Μετάδοση2 Αυτή η μετάδοση χρησιμοποιεί ένα απλό μοντέλο μετάδοσης (SimpleTransmission), 
+όπου μια ενέργεια εφαρμόζεται στην άρθρωση μεταξύ των τμημάτων "arm2" και "arm3" -->
+  <transmission name="transmission2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="arm2_arm3_joint">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor2">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  </robot>

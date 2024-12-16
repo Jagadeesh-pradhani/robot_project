@@ -1,0 +1,44 @@
+<?xml version='1.0'?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<!-- Ορισμός μεγέθους και μάζας της κάμερας -->
+<xacro:property name="cameraSize" value="0.05"/>
+<xacro:property name="cameraMass" value="0.1"/>
+
+
+<!-- Δεύτερη κάμερα στο κεφάλι-->
+<link name="camera2">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${cameraSize} ${cameraSize} ${cameraSize}"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${cameraSize} ${cameraSize} ${cameraSize}"/>
+      </geometry>
+      <material name="orange"/>
+    </visual>
+
+    <inertial>
+      <mass value="${cameraMass}" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <box_inertia m="${cameraMass}" x="${cameraSize}" y="${cameraSize}" z="${cameraSize}" />
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+<!--Σύνδεση κάμερας με το κεφάλι του ρομπότ με μία fixed άρθρωση-->
+  <joint name="camera2_joint" type="fixed">
+    <axis xyz="0 0 0" />
+    <origin xyz="0 0 0.1" rpy="0 0 0"/>
+    <parent link="head"/>
+    <child link="camera2"/>
+  </joint>
+
+
+
+</robot>

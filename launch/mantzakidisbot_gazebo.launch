@@ -1,0 +1,19 @@
+<launch>
+   <!-- Συμπερίληψη του κενού κόσμου Gazebo -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+  <!-- Ορισμός του αρχείου κόσμου που θα χρησιμοποιηθεί που είναι το ίδιο κτήριο που σχεδίασα για την πρώτη εργασία -->
+  <arg name="world_name" value="$(find project_final_mantzakidis_131)/worlds/project_v2.world"/>
+    <arg name="paused" default="false"/>
+    <arg name="use_sim_time" default="true"/>
+    <arg name="gui" default="true"/>
+    <arg name="headless" default="false"/>
+    <arg name="debug" default="false"/>
+  </include>
+
+  <!-- Ορισμός της παραμέτρου robot_description με τη χρήση του xacro -->
+  <param name="robot_description" command="$(find xacro)/xacro  '$(find project_final_mantzakidis_131)/urdf/mantzakidisbot.xacro'" />
+
+  <!-- Εκκίνηση του κόμβου για την εισαγωγή του ρομπότ στον κόσμο Gazebo στις συντεταγμένες x = 0.0, y = 0.0, z = 0.0-->
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+     args="-param robot_description -urdf -model mantzakidisbot -x 0.0 -y 0.0 -z 0.0" />
+</launch>
