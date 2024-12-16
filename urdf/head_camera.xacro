@@ -29,7 +29,7 @@
       <box_inertia m="${cameraMass}" x="${cameraSize}" y="${cameraSize}" z="${cameraSize}" />
       <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
     </inertial>
-  </link>
+</link>
 
 <!--Σύνδεση κάμερας με το κεφάλι του ρομπότ με μία fixed άρθρωση-->
   <joint name="camera2_joint" type="fixed">

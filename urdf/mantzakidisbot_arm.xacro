@@ -9,7 +9,7 @@
  <xacro:property name="damp" value="0.7" />  <!-- Aπόσβεση (damping) που εφαρμόζεται σε έναν αρθρωτό μηχανισμό για να μειωθούν οι δονήσεις-->
 
 <!-- Εισαγωγή URDF της αρπάγης -->
-  <xacro:include filename="$(find project_final_mantzakidis_131)/urdf/gripper.xacro" />
+  <xacro:include filename="$(find robot_project)/urdf/gripper.xacro" />
 
 <!-- Μακρο εντολή για τον υπολογισμό της αδράνειας-->
   <xacro:macro name="default_inertial" params="z_value i_value mass">

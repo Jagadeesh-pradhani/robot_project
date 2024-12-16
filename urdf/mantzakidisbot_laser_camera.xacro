@@ -60,7 +60,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://project_final_mantzakidis_131/meshes/hokuyo.dae"/>
+        <mesh filename="package://robot_project/meshes/hokuyo.dae"/>
       </geometry>
     </visual>
 

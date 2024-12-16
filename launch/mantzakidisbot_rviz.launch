@@ -1,8 +1,8 @@
 <launch>
 <!-- Ορισμός της παραμέτρου model -->
-  <arg name="model" default="'$(find project_final_mantzakidis_131)/urdf/$(arg model)'"/>
+  <arg name="model" default="mantzakidisbot.xacro"/>
   <!-- Ορισμός της παραμέτρου robot_description -->
-  <param name="robot_description" command="$(find xacro)/xacro  '$(find project_final_mantzakidis_131)/urdf/$(arg model)'" />
+  <param name="robot_description" command="$(find xacro)/xacro  '$(find robot_project)/urdf/$(arg model)'" />
 
   <!-- Εκκίνηση του joint_state_publisher_gui -->
   <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
@@ -10,6 +10,6 @@
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
 
   <!-- Οπτικοποίηση του μοντέλου το ρομπότ 3D -->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find project_final_mantzakidis_131)/urdf.rviz" required="true" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robot_project)/urdf.rviz" required="true" />
 
 </launch>
