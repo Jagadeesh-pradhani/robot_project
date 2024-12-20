@@ -18,5 +18,5 @@
   </node>
 
 <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robot_project)/src/urdf.rviz" required="true" />
-
+  <node name="rqt" pkg="rqt_gui" type="rqt_gui" args="--perspective-file $(find robot_project)/src/rqt.perspective" output="screen" />
 </launch>
