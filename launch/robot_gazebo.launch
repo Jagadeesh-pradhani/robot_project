@@ -16,4 +16,7 @@
   <!-- Εκκίνηση του κόμβου για την εισαγωγή του ρομπότ στον κόσμο Gazebo στις συντεταγμένες x = 0.0, y = 0.0, z = 0.0-->
   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
      args="-param robot_description -urdf -model robot -x 0.0 -y 0.0 -z 0.0" />
+
+    
+
 </launch>

@@ -11,17 +11,17 @@
 
   <!-- Οπτικοποίηση του σασί του ρομπότ με πράσινο χρώμα -->
   <gazebo reference="chassis">
-    <material>Gazebo/Green</material>
+    <material>Gazebo/Orange</material>
   </gazebo>
 
 <!-- Οπτικοποίηση του κεφαλιού του ρομπότ με πράσινο χρώμα -->
   <gazebo reference="head">
-    <material>Gazebo/Green</material>
+    <material>Gazebo/Orange</material>
   </gazebo>
 
 <!-- Οπτικοποίηση του caster του ρομπότ με πράσινο χρώμα -->
   <gazebo reference="caster">
-    <material>Gazebo/Green</material>
+    <material>Gazebo/Orange</material>
   </gazebo>
 
   <!-- Οπτικοποίηση της δεξιάς ρόδας του ρομπότ με μαύρο χρώμα -->
@@ -38,21 +38,21 @@
   <gazebo reference="arm1">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
-    <material>Gazebo/Red</material>
+    <material>Gazebo/Yellow</material>
   </gazebo>
 
    <!-- Οπτικοποίηση του δεύτερου τμήματος του βραχίονα με μπλε χρώμα -->
   <gazebo reference="arm2">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
-    <material>Gazebo/Blue</material>
+    <material>Gazebo/Green</material>
   </gazebo>
 
 <!-- Οπτικοποίηση του τρίτου τμήματος του βραχίονα με πορτοκαλί χρώμα -->
   <gazebo reference="arm3">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
-    <material>Gazebo/Orange</material>
+    <material>Gazebo/Turquoise</material>
   </gazebo>
 
 

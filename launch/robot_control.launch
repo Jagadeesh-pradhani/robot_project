@@ -17,4 +17,6 @@
     <remap from="/joint_states" to="/robot/joint_states" />
   </node>
 
+<node name="rviz" pkg="rviz" type="rviz" args="-d $(find robot_project)/src/urdf.rviz" required="true" />
+
 </launch>
