@@ -32,7 +32,6 @@ Run the simulation <br>
   roslaunch robot_project robot_control.launch
   ```
   ![image](https://github.com/user-attachments/assets/4a8b53f6-3e1c-4bc9-aa12-0345ad1d1566)
-<br>
 - Terminal-3
   ```
   cd ~/robot_ws/
