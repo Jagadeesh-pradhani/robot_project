@@ -1,0 +1,71 @@
+{
+  "keys": {},
+  "groups": {
+    "mainwindow": {
+      "keys": {
+        "geometry": {
+          "repr(QByteArray.hex)": "QtCore.QByteArray(b'01d9d0cb0003000000000322000000fb00000579000002e1000003220000012000000579000002e100000000000000000780000003220000012000000579000002e1')",
+          "type": "repr(QByteArray.hex)",
+          "pretty-print": "     \"   y   \"   y        \"   y  "
+        },
+        "state": {
+          "repr(QByteArray.hex)": "QtCore.QByteArray(b'000000ff00000000fd00000001000000030000025800000198fc0100000001fb00000058007200710074005f007000750062006c00690073006800650072005f005f005000750062006c00690073006800650072005f005f0031005f005f005000750062006c006900730068006500720057006900640067006500740100000000000002580000023000ffffff000002580000000000000004000000040000000800000008fc00000001000000030000000100000036004d0069006e0069006d0069007a006500640044006f0063006b00570069006400670065007400730054006f006f006c0062006100720000000000ffffffff0000000000000000')",
+          "type": "repr(QByteArray.hex)",
+          "pretty-print": "                 Xrqt_publisher__Publisher__1__PublisherWidget                            6MinimizedDockWidgetsToolbar        "
+        }
+      },
+      "groups": {
+        "toolbar_areas": {
+          "keys": {
+            "MinimizedDockWidgetsToolbar": {
+              "repr": "8",
+              "type": "repr"
+            }
+          },
+          "groups": {}
+        }
+      }
+    },
+    "pluginmanager": {
+      "keys": {
+        "running-plugins": {
+          "repr": "{'rqt_publisher/Publisher': [1]}",
+          "type": "repr"
+        }
+      },
+      "groups": {
+        "plugin__rqt_publisher__Publisher__1": {
+          "keys": {},
+          "groups": {
+            "dock_widget__PublisherWidget": {
+              "keys": {
+                "dock_widget_title": {
+                  "repr": "'Message Publisher'",
+                  "type": "repr"
+                },
+                "dockable": {
+                  "repr": "True",
+                  "type": "repr"
+                },
+                "parent": {
+                  "repr": "None",
+                  "type": "repr"
+                }
+              },
+              "groups": {}
+            },
+            "plugin": {
+              "keys": {
+                "publishers": {
+                  "repr": "\"[{'topic_name': '/robot/joint_arm1_arm2_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 1.0, 'enabled': False, 'publisher_id': 0, 'counter': 22, 'expressions': {'/robot/joint_arm1_arm2_position_controller/command/data': '-0.5'}}, {'topic_name': '/robot/joint_arm2_arm3_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 1.0, 'enabled': False, 'publisher_id': 1, 'counter': 22, 'expressions': {'/robot/joint_arm2_arm3_position_controller/command/data': '1.0'}}]\"",
+                  "type": "repr"
+                }
+              },
+              "groups": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}
