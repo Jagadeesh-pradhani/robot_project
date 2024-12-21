@@ -1,8 +1,8 @@
 <launch>
    <!-- Συμπερίληψη του κενού κόσμου Gazebo -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-  <!-- Ορισμός του αρχείου κόσμου που θα χρησιμοποιηθεί που είναι το ίδιο κτήριο που σχεδίασα για την πρώτη εργασία -->
-  <arg name="world_name" value="$(find robot_project)/worlds/project_v2.world"/>
+
+   <arg name="world_name" value="$(find robot_project)/worlds/project_v2.world"/>
     <arg name="paused" default="false"/>
     <arg name="use_sim_time" default="true"/>
     <arg name="gui" default="true"/>
