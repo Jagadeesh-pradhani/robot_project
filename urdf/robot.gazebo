@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <robot>
 
-  <!-- Πρόσθετο ros_control -->
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
       <robotNamespace>/robot</robotNamespace>
@@ -9,46 +8,38 @@
     </plugin>
   </gazebo>
 
-  <!-- Οπτικοποίηση του σασί του ρομπότ με πράσινο χρώμα -->
   <gazebo reference="chassis">
     <material>Gazebo/Orange</material>
   </gazebo>
 
-<!-- Οπτικοποίηση του κεφαλιού του ρομπότ με πράσινο χρώμα -->
   <gazebo reference="head">
     <material>Gazebo/Orange</material>
   </gazebo>
 
-<!-- Οπτικοποίηση του caster του ρομπότ με πράσινο χρώμα -->
   <gazebo reference="caster">
     <material>Gazebo/Orange</material>
   </gazebo>
 
-  <!-- Οπτικοποίηση της δεξιάς ρόδας του ρομπότ με μαύρο χρώμα -->
   <gazebo reference="right_wheel">
     <material>Gazebo/Black</material>
   </gazebo>
 
- <!-- Οπτικοποίηση της αριστερής ρόδας του ρομπότ με μαύρο χρώμα -->
   <gazebo reference="left_wheel">
     <material>Gazebo/Black</material>
   </gazebo>
 
-  <!-- Οπτικοποίηση του πρώτου τμήματος του βραχίονα με κόκκινο χρώμα -->
   <gazebo reference="arm1">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/Yellow</material>
   </gazebo>
 
-   <!-- Οπτικοποίηση του δεύτερου τμήματος του βραχίονα με μπλε χρώμα -->
   <gazebo reference="arm2">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/Green</material>
   </gazebo>
 
-<!-- Οπτικοποίηση του τρίτου τμήματος του βραχίονα με πορτοκαλί χρώμα -->
   <gazebo reference="arm3">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
@@ -57,23 +48,18 @@
 
 
 
-  <!-- Συντελεστές τριβής για το αριστερό κομμάτι της αρπάγης -->
   <gazebo reference="left_gripper">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
   </gazebo>
-    <!-- Συντελεστές τριβής για το δεξιό κομμάτι της αρπάγης -->
   <gazebo reference="right_gripper">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
   </gazebo>
 
- <!-- Σύνδεσμος Αριστερού Άκρου αρπάγης -->
   <gazebo reference="left_tip" />
-  <!-- Σύνδεσμος Δεξιού Άκρου αρπάγης -->
   <gazebo reference="right_tip" />
 
- <!-- Ελεγκτής Διαφορικής Κίνησης -->
 <gazebo>
     <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
       <legacyMode>false</legacyMode>
@@ -97,7 +83,6 @@
   </gazebo>
 
 
-<!-- Κάμερα στο σασί του ρομπότ πορτοκαλί χρώματος -->
   <gazebo reference="camera">
     <material>Gazebo/Orange</material>
     <sensor type="camera" name="camera1">
@@ -132,7 +117,6 @@
     </sensor>
   </gazebo>
 
-<!-- Hokuyo Laser scanner-->
   <gazebo reference="hokuyo">
     <sensor type="ray" name="head_hokuyo_sensor">
       <pose>0 0 0 0 0 0</pose>
@@ -170,7 +154,6 @@
     </sensor>
   </gazebo>
 
-<!-- Κάμερα στο κεφάλι του ρομπότ πορτοκαλί χρώματος -->
 <gazebo reference="camera2">
     <material>Gazebo/Orange</material>
     <sensor type="camera" name="camera2">
